@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: spring-cloud-server-application
+server:
+  port: 0
+

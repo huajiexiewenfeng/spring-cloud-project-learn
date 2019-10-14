@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: spring-cloud-client-application
+  server:
+    name: spring-cloud-server-application
+server:
+  port: 8082
+
+saying:
+  rest:
+    service:
+      name: ${spring.server.name}
