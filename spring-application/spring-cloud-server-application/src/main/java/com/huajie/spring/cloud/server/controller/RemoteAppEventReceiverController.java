@@ -1,8 +1,11 @@
 package com.huajie.spring.cloud.server.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeansException;
 import org.springframework.context.*;
 import org.springframework.context.event.EventListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +15,8 @@ import java.util.Map;
 
 @RestController
 public class RemoteAppEventReceiverController implements ApplicationEventPublisherAware {
+
+    private Logger logger = LoggerFactory.getLogger(RemoteAppEventReceiverController.class);
 
     private ApplicationEventPublisher publisher;
 
@@ -50,8 +55,9 @@ public class RemoteAppEventReceiverController implements ApplicationEventPublish
     }
 
     @EventListener
-    private void onEvent(SenderRemoteAppEvent data){
-        System.out.println(data.getSender()+":"+data.getSource());
+    @Async
+    public void onEvent(SenderRemoteAppEvent data){
+        logger.info(data.getSender()+":"+data.getSource());
     }
 
     @Override

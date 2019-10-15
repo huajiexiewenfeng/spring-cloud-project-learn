@@ -22,11 +22,8 @@ import java.util.stream.Collectors;
 @RestController
 public class RemoteSpringEventSenderConntroller implements ApplicationEventPublisherAware {
 
-    @Value("${spring.application.name}")
-    private String currentAppName;
-
-    @Autowired
-    private DiscoveryClient discoveryClient;
+//    @Autowired
+//    private DiscoveryClient discoveryClient;
 
     private ApplicationEventPublisher publisher;
 
@@ -36,32 +33,41 @@ public class RemoteSpringEventSenderConntroller implements ApplicationEventPubli
         return "Sent";
     }
 
+//    @RequestMapping("/send/remote/event/{appName}")
+//    public String sendAppCluster(@PathVariable String appName, @RequestBody Map data) {
+//        //发送数据到自己
+//        List<ServiceInstance> services = discoveryClient.getInstances(appName);
+//        RemoteAppEvent remoteAppEvent = new RemoteAppEvent(data, "http", appName, currentAppName, services);
+//        //发送事件到当前的上下文
+//        publisher.publishEvent(remoteAppEvent);
+//        return "Ok";
+//    }
+//http://127.0.0.1:8082//send/remote/event/spring-application-server?message=helloword11
     @RequestMapping("/send/remote/event/{appName}")
     public String sendAppCluster(@PathVariable String appName, @RequestBody Map data) {
         //发送数据到自己
-        List<ServiceInstance> services = discoveryClient.getInstances(appName);
-        RemoteAppEvent remoteAppEvent = new RemoteAppEvent(data, "http", appName, currentAppName, services);
+        RemoteAppEvent remoteAppEvent = new RemoteAppEvent(data, appName, true);
         //发送事件到当前的上下文
         publisher.publishEvent(remoteAppEvent);
         return "Ok";
     }
 
-    @RequestMapping("/send/remote/event/{appName}/{ip}/{port}")
-    public String sendAppInstance(@PathVariable String appName,
-                                  @PathVariable String ip,
-                                  @PathVariable int port
-            , @RequestBody Map data) {
-        //发送数据到自己
-//        List<ServiceInstance> services = discoveryClient.getInstances(appName);
-//        List<ServiceInstance> collect = services.stream().filter(serviceInstance ->
-//                serviceInstance.getHost().equals(ip) && serviceInstance.getPort() == port
-//        ).collect(Collectors.toList());
-        ServiceInstance serviceInstance = new DefaultServiceInstance(appName,ip,port,false);
-        RemoteAppEvent remoteAppEvent = new RemoteAppEvent(data, "http", appName, currentAppName, Arrays.asList(serviceInstance));
-        //发送事件到当前的上下文
-        publisher.publishEvent(remoteAppEvent);
-        return "Ok";
-    }
+//    @RequestMapping("/send/remote/event/{appName}/{ip}/{port}")
+//    public String sendAppInstance(@PathVariable String appName,
+//                                  @PathVariable String ip,
+//                                  @PathVariable int port
+//            , @RequestBody Map data) {
+//        //发送数据到自己
+////        List<ServiceInstance> services = discoveryClient.getInstances(appName);
+////        List<ServiceInstance> collect = services.stream().filter(serviceInstance ->
+////                serviceInstance.getHost().equals(ip) && serviceInstance.getPort() == port
+////        ).collect(Collectors.toList());
+//        ServiceInstance serviceInstance = new DefaultServiceInstance(appName, ip, port, false);
+//        RemoteAppEvent remoteAppEvent = new RemoteAppEvent(data, "http", appName, currentAppName, Arrays.asList(serviceInstance));
+//        //发送事件到当前的上下文
+//        publisher.publishEvent(remoteAppEvent);
+//        return "Ok";
+//    }
 
 
     @Override

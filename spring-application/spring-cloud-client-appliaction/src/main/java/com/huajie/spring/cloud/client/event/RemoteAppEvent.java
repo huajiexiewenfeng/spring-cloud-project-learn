@@ -7,39 +7,22 @@ import java.util.List;
 
 public class RemoteAppEvent extends ApplicationEvent {
 
-    /**
-     * http rpc mq
-     */
-    private String type;
+    private final String appName;
 
-    private String appName;
+    private final boolean isCluster;
 
-    private String sender;
-
-    private List<ServiceInstance> serviceInstances;
-
-    public RemoteAppEvent(Object source, String type, String appName, String sender, List<ServiceInstance> serviceInstances) {
+    public RemoteAppEvent(Object source, String appName, boolean isCluster) {
         super(source);
-        this.type = type;
         this.appName = appName;
-        this.sender = sender;
-        this.serviceInstances = serviceInstances;
-    }
-
-
-    public String getType() {
-        return type;
+        this.isCluster = isCluster;
     }
 
     public String getAppName() {
         return appName;
     }
 
-    public List<ServiceInstance> getServiceInstances() {
-        return serviceInstances;
+    public boolean isCluster() {
+        return isCluster;
     }
 
-    public String getSender() {
-        return sender;
-    }
 }
