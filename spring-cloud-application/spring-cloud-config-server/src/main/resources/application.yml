@@ -1,0 +1,12 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      file:
+        path: D://tmp/springcloud-config/
+      server:
+        git:
+          uri: file://${user.dir}/spring-cloud-project-learn/spring-cloud-application/spring-cloud-config-server/resources/config
