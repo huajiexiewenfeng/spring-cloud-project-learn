@@ -12,7 +12,8 @@ spring学习
   * [理解@SpringBootApplication](https://blog.csdn.net/xiewenfeng520/article/details/102363322) 
   * [@Enable 模块驱动](https://blog.csdn.net/xiewenfeng520/article/details/102485107) 
 * spring-cloud-application  手写spring cloud系列 基础组件
-  * 网关
+  * spring-cloud-servlet-gateway 网关
+  * spring-cloud-config-server 配置中心
 # 博客地址
 https://blog.csdn.net/xiewenfeng520
 文章在持续整理中
