@@ -11,6 +11,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>spring-cloud-servlet-gateway</module>
+        <module>spring-cloud-config-client</module>
+        <module>spring-cloud-config-server</module>
     </modules>
 
     <artifactId>spring-cloud-application</artifactId>
