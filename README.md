@@ -13,8 +13,8 @@ spring学习
   * [@Enable 模块驱动](https://blog.csdn.net/xiewenfeng520/article/details/102485107) 
 * spring-cloud-application  手写spring cloud系列 基础组件
   * spring-cloud-servlet-gateway 网关
-  * spring-cloud-config-server 配置中心服务端
-  * spring-cloud-config-client 配置中心客户端
+  * [spring-cloud-config-server 配置中心服务端](https://blog.csdn.net/xiewenfeng520/article/details/102874146) 
+  * [spring-cloud-config-client 配置中心客户端](https://blog.csdn.net/xiewenfeng520/article/details/102882778) 
 # 博客地址
 https://blog.csdn.net/xiewenfeng520
 文章在持续整理中
